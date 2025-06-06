@@ -1,0 +1,20 @@
+#SPDX-License-Identifier: MIT-0
+# tasks file for roles/webserver
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Installeer Apache, PHP en PHP-MySQL
+  apt:
+    name:
+      - apache2
+      - php
+      - php-mysql
+    state: present
+
+- name: Start en enable Apache
+  service:
+    name: apache2
+    state: started
+    enabled: yes
